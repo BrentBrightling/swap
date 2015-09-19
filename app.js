@@ -5,6 +5,7 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var assert = require('assert');
+var test = require('./test');
 var app = express();
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -15,9 +16,12 @@ app.use(express.static(__dirname + '/public'))
    .use(cookieParser());
 
 app.post('/send', function(req,res){
+
+  test.init();
+
   var amount = req.body.amount;
   console.log('Amount given: ');
   console.log(String(amount));
 });
 
-app.listen(80);
+app.listen(8888);
