@@ -71,6 +71,15 @@ form input.pass {
 ::-moz-placeholder { color: #ccc; text-transform: uppercase; }
 :-ms-input-placeholder { color: #ccc; text-transform: uppercase; }
 
+#rightDiv {
+  float: right;
+}
+
+#bigDiv {
+  width: 50%;
+  float: center;
+}
+
 #Login, #Register {
   width: 248px;
   margin-bottom: 0;

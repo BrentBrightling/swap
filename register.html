@@ -1,28 +1,35 @@
+
 <html>
   <head>
+    <meta charset = "UTF-8">
+    <title>Swap</title>
+    <meta name= "viewport" content="width=device-width,initial-scale=1">
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="assets/css/main.css">
   </head>
   <body>
-
-    <div>
-      <div>Id: <input type='text' id= 'idInput' placeholder = 'e.g. 6god'><br \></div>
-      <div>Name: <input type='text' id= 'nameInput' placeholder = 'Name'><br \></div>
+    
+    <form action = "">
+    <!--<div id = "bigDiv">-->
+      <div><input type='text' id= 'idInput' placeholder = 'ID'><br \></div>
+      <div><input type='text' id= 'nameInput' placeholder = 'Name'><br \></div>
       <div>Card Type: 
-        <select id = 'cardTypeInput'>
+        <select id = 'cardTypeInput' class = "selectpicker">
           <option value="Option 1">Option1</option>
           <option value="Option 2">Option2</option>
           <option value="">Option3</option>
         </select>
       </div>
-      <div>Card Number: <input type='text' id= 'cardNumInput' placeholder = 'Card #'><br \></div>
-      <div>Routing Number: <input type='text' id= 'routingNumInput' placeholder = 'Routing #'><br \></div>
-      <div>Password: <input type='password' id= 'passwordInput' placeholder = 'Password'><br \></div>
-      <div>Confirm Password: <input type='password' id= 'password2Input' placeholder = 'Re-type Password'><br \></div>
-      <div>Email: <input type='text' id= 'emailInput' placeholder = 'Email'><br \></div>
-      <div>Currency: <input type='text' id= 'currencyInput' placeholder = 'Currency'><br \></div>
+      <div><input type='text' id= 'cardNumInput' placeholder = 'Card #'><br \></div>
+      <div><input type='text' id= 'routingNumInput' placeholder = 'Routing #'><br \></div>
+      <div><input type='password' id= 'passwordInput' placeholder = 'Password'><br \></div>
+      <div><input type='password' id= 'password2Input' placeholder = 'Re-type Password'><br \></div>
+      <div><input type='text' id= 'emailInput' placeholder = 'Email'><br \></div>
+      <div><input type='text' id= 'currencyInput' placeholder = 'Currency'><br \></div>
       <button type="button" id="register" onclick = "sign_up_submit()">Register</button>
-    </div>
+    <!--</div>-->
+    </form>
 
     <script>
 
