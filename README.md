@@ -1,1 +1,1 @@
-Swap App - Hack The North
+Swap App - Hack The North app
