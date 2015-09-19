@@ -1,1 +1,1 @@
-Swap App - Hack The North app using Moxtra and Coinbase
+Swap App - Hack The North app using Moxtra and Coinbase.
