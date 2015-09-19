@@ -10,18 +10,18 @@
       <div>Name: <input type='text' id= 'nameInput' placeholder = 'Name'><br \></div>
       <div>Card Type: 
         <select id = 'cardTypeInput'>
-          <option value="">Option1</option>
-          <option value="">Option2</option>
+          <option value="Option 1">Option1</option>
+          <option value="Option 2">Option2</option>
           <option value="">Option3</option>
         </select>
       </div>
       <div>Card Number: <input type='text' id= 'cardNumInput' placeholder = 'Card #'><br \></div>
       <div>Routing Number: <input type='text' id= 'routingNumInput' placeholder = 'Routing #'><br \></div>
-      <div>Password: <input type='text' id= 'passwordInput' placeholder = 'Password'><br \></div>
-      <div>Confirm Password: <input type='text' id= 'password2Input' placeholder = 'Re-type Password'><br \></div>
+      <div>Password: <input type='password' id= 'passwordInput' placeholder = 'Password'><br \></div>
+      <div>Confirm Password: <input type='password' id= 'password2Input' placeholder = 'Re-type Password'><br \></div>
       <div>Email: <input type='text' id= 'emailInput' placeholder = 'Email'><br \></div>
       <div>Currency: <input type='text' id= 'currencyInput' placeholder = 'Currency'><br \></div>
-      <button type="button" id="register">Register</button>
+      <button type="button" id="register" onclick = "sign_up_submit()">Register</button>
     </div>
 
     <script>
@@ -29,21 +29,25 @@
       var baseRef = new Firebase('https://popping-heat-6727.firebaseio.com/');
       var usersRef = baseRef.child("users");
 
-      $('#messageInput').keypress(function (e) {
-        if (e.keyCode == 13) {
-          usersRef.set({
-            alanisawesome: {
-              date_of_birth: "June 23, 1912",
-              full_name: "Alan Turing"
-            },
-            gracehop: {
-              date_of_birth: "December 9, 1906",
-              full_name: "Grace Hopper"
-            }
-          });
+      function sign_up_submit() {
+        var cardTypeInput = document.getElementById("cardTypeInput");
+        var selectedValue = cardTypeInput.options[cardTypeInput.selectedIndex].value;
+        console.log(selectedValue);
+        console.log()
 
-        }
-      });
+        usersRef.push({
+          id: $('#idInput').val(),
+          name: $('#nameInput').val(),
+          card_type: cardTypeInput.options[cardTypeInput.selectedIndex].value,
+          card_number: $('#cardNumInput').val(),
+          routing_number: $('#routingNumInput').val(),
+          password: $('#passwordInput').val(),
+          email: $('#emailInput').val(),
+          currency: $('#currencyInput').val()
+        });
+
+      }
+
     </script>
   
   </body>
