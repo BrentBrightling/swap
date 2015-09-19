@@ -20,4 +20,4 @@ app.post('/send', function(req,res){
   console.log(String(amount));
 });
 
-app.listen(8888);
+app.listen(80);
