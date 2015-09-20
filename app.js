@@ -17,10 +17,12 @@ app.use(express.static(__dirname + '/public'))
 
 app.post('/send', function(req,res){
 
+  console.log('Amount given: ');
   client.init();
 
   var amount = req.body.amount;
-  console.log('Amount given: ');
+  var sendID = req.body.sendID;
+
   console.log(String(amount));
 });
 

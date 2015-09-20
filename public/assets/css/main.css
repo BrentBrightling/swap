@@ -80,7 +80,7 @@ form input.pass {
   float: center;
 }
 
-#Login, #Register {
+input[type="button"] {
   width: 248px;
   margin-bottom: 0;
   color: #3f898a;
