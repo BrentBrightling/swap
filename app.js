@@ -5,7 +5,7 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var assert = require('assert');
-var test = require('./test');
+var client = require('./client');
 var app = express();
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -17,7 +17,7 @@ app.use(express.static(__dirname + '/public'))
 
 app.post('/send', function(req,res){
 
-  test.init();
+  client.init();
 
   var amount = req.body.amount;
   console.log('Amount given: ');
