@@ -38,7 +38,7 @@ var makeTransfer = function() {
 var transfer = function(amt, client) {
   var numBit;
   client.getBuyPrice({'qty': 1, 'currency': 'CAN'}, function(err, obj) {
-    dollarsToBit(obj.total.amount, amt);
+    numBit = dollarsToBit(obj.total.amount, amt);
   });
   return (numBit);
 };
@@ -46,4 +46,5 @@ var transfer = function(amt, client) {
 var dollarsToBit = function (bitCoinValue, amount) {
   var noOfBitCoins = amount / bitCoinValue;
   console.log(noOfBitCoins + " will be transferred");
+  return (noOfBitCoins);
 };
