@@ -22,6 +22,10 @@ $(function() {
 			},
 			success: function(data) {
 				alert(data);
-			}
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+        		alert(xhr.status);
+        		alert(thrownError);
+     		}
 		});
 });
