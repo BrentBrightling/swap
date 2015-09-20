@@ -7,9 +7,6 @@ var codekey = str.substring(n+5,n+len+5);
 //var client = require('./client');
 console.log(codekey);
 
-var welc = document.getElementbyUD("Welcome");
-welc.text ="Welcome!";
-
 $(function() {
   var obj;
    $.ajax({
