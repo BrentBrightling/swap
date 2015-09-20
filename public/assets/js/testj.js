@@ -6,11 +6,17 @@ function httpGet(theUrl)
     return xmlHttp.responseText;
 }
 
+var str = window.location.href
+console.log(str)
+
 //$(function() {
-//    console.log( "ready!" );
-//    $("#Login").click(function() {
-//    httpGet("https://www.coinbase.com/oauth/authorize?response_type=code&client_id=5c858248b84d2a1e128055aeec577967ff45c27ea9fa782dc4f800681323f274&redirect_uri=http://www.swapexchange.co/send.html&state=SECURE_RANDOM&scope=wallet:accounts:read")
-//    $("a[href='payment.html']").attr('href', 'https://www.coinbase.com/oauth/authorize?client_id=5c858248b84d2a1e128055aeec577967ff45c27ea9fa782dc4f800681323f274&redirect_uri=http%3A%2F%2Fwww.swapexchange.co%2Fsend.html&response_type=code&scope=wallet%3Auser%3Aread')
+//   $.ajax({
+//  type: "POST",
+//  url: "https://api.coinbase.com/oauth/token",
+//  data: "grant_type=authorization_code&code=4c666b5c0c0d9d3140f2e0776cbe245f3143011d82b7a2c2a590cc7e20b79ae8&client_id=1532c63424622b6e9c4654e7f97ed40194a1547e114ca1c682f44283f39dfa49&client_secret=3a21f08c585df35c14c0c43b832640b29a3a3a18e5c54d5401f08c87c8be0b20&redirect_uri=https://example.com/oauth/callback',
+//  success: success,
+//  dataType: "json
+//});
 //});
 //});
 
