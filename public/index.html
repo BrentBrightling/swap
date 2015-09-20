@@ -2,42 +2,95 @@
 
 <html>
 	<head>
+		<!--Tab icon-->
+		<link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="/icon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+		<link rel="manifest" href="/icon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+		<!---->	
 		<meta charset = "UTF-8">
-		<title>Swap</title>
-		<meta name= "viewport" content="width=device-width,
-			initial-scale=1">
-		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<title>Swap Exchange</title>
+		<meta name= "viewport" content="width=device-width,initial-scale=1">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
 		<link rel="stylesheet" href="assets/css/main.css">
-		<script src="assets/js/testj.js"></script>
+		<script src="assets/js/main.js"></script>
 	</head>
 
 	<body>
 		<header>
 			<h1>Swap</h1>	
-
 		</header>
+		
 
-
-		<form action="">
-		    
+		<form action="">  
 		  <label for=""></label>
 		  <input type="text" name="" id="email" placeholder="email" class="email">
-		    
-		  <label for=""></label>
 		  <input type="password" name="" id="pw" placeholder="password" class="pass">
-		  
-		  <a href="https://www.coinbase.com/oauth/authorize?response_type=code&client_id=5c858248b84d2a1e128055aeec577967ff45c27ea9fa782dc4f800681323f274&redirect_uri=http://www.swapexchange.co/payment.html&state=1671ef5t4704we94&scope=wallet:accounts:read"><input type="button" id='Login' value="Sign IN"></input></a>
-		  <input type="button" id='Register' value="Register"></input>
-
-		    
+		  <p id = "id_message">This id or password is incorrect, please try again.</p>
+			<a href="https://www.coinbase.com/oauth/authorize?response_type=code&client_id=5c858248b84d2a1e128055aeec577967ff45c27ea9fa782dc4f800681323f274&redirect_uri=http://www.swapexchange.co/payment.html&state=1671ef5t4704we94&scope=wallet:accounts:read"><input type="button" id='Login' value="Sign IN" onClick = "lookup()"></input></a><input type="button" id='Register' value="Register" onClick = "register()"></input>
 		</form>
 
 		<script>
-			
-		</script>
-		
-	</body>
-	
+		$('#id_message').hide();
+		var retrieveRef = new Firebase('https://popping-heat-6727.firebaseio.com/users')
+		var database_snapshot;
+		var emails = [];
+		var passes = [];
 
+		retrieveRef.on("value", function(snapshot) {
+      database_snapshot = snapshot.val();
+      for (var i in database_snapshot) {
+    		emails.push(database_snapshot[i].email);
+    		passes.push(database_snapshot[i].password);
+			}
+			database_snapshot = null;
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+
+		function lookup() {
+			var email = $('#email').val();
+			var pass = $('#pw').val(); 
+			if (email.length == 0 || pass.length == 0) {
+				return;
+			}
+			var flag = false;
+
+			for (var i in emails) {
+    		if (email == emails[i] && pass == passes[i]) {
+    			flag = true;
+    		}
+			}
+
+			if (flag) {
+				window.location.assign("payment.html");
+			}
+			else {
+				$('#id_message').css('visibility','visible');
+				$('#pw').css('margin',0);
+				$('#id_message').show();
+				console.log('Either this id does not exist or you have entered an incorrect password.');
+			}
+		}
+
+		function register() {
+			window.location.assign("register.html")
+		}
+		</script>
+	</body>
 </html>
 

@@ -1,21 +1,27 @@
 @import url(https://fonts.googleapis.com/css?family=Poiret+One);
 
 header {
-	
-	height: 40vh;
-	background-size: cover;
-	margin-bottom: 50px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	
+  
+  height: 40vh;
+  background-size: cover;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
 
 }
 
+p {
+    visibility: hidden;
+    color: red;
+    text-align: center;
+}
+
 h1 {
-	font-size: 40px;
-	font-family: Poiret One;
+  font-size: 40px;
+  font-family: Poiret One;
 }
 
 body {
@@ -23,7 +29,6 @@ body {
   padding: 40px;
   font-family: Poiret One;
 }
-
 
 form {
   position: relative;
@@ -76,11 +81,10 @@ form input.pass {
 }
 
 #bigDiv {
-  width: 50%;
   float: center;
 }
 
-input[type="button"] {
+#Login, #Register {
   width: 248px;
   margin-bottom: 0;
   color: #3f898a;

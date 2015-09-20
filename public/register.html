@@ -1,46 +1,71 @@
-
 <html>
   <head>
+    <!--Tab icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+    <link rel="manifest" href="/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!----> 
     <meta charset = "UTF-8">
-    <title>Swap</title>
+    <title>Swap Exchange</title>
     <meta name= "viewport" content="width=device-width,initial-scale=1">
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <link rel="stylesheet" href="assets/css/main.css">
   </head>
+
   <body>
-    
     <form action = "">
-    <!--<div id = "bigDiv">-->
-      <div><input type='text' id= 'idInput' placeholder = 'ID'><br \></div>
-      <div><input type='text' id= 'nameInput' placeholder = 'Name'><br \></div>
-      <div>Card Type: 
-        <select id = 'cardTypeInput' class = "selectpicker">
-          <option value="Option 1">Option1</option>
-          <option value="Option 2">Option2</option>
-          <option value="">Option3</option>
-        </select>
+      <div>
+        <div><input type='text' id= 'idInput' placeholder = 'ID'><br \></div>
+        <div><input type='text' id= 'nameInput' placeholder = 'Name'><br \></div>
+        <div>Card Type: 
+          <select id = 'cardTypeInput' class = "selectpicker">
+            <option value="Chequing">Chequing</option>
+            <option value="Savings">Savings</option>
+            <option value="Business Chequing">Business Chequing</option>
+          </select>
+          <br />
+          <br />
+        </div>
+        <div><input type='text' id= 'cardNumInput' placeholder = 'Card #'><br \></div>
+        <div><input type='text' id= 'routingNumInput' placeholder = 'Routing #'><br \></div>
+        <div><input type='password' id= 'passwordInput' placeholder = 'Password'><br \></div>
+        <div><input type='password' id= 'password2Input' placeholder = 'Re-type Password'><br \></div>
+        <div><input type='text' id= 'emailInput' placeholder = 'Email'><br \></div>
+        <div><input type='text' id= 'currencyInput' placeholder = 'Currency'><br \></div>
+        <button type="button" id="register" onClick = "signUp()">Register</button>
       </div>
-      <div><input type='text' id= 'cardNumInput' placeholder = 'Card #'><br \></div>
-      <div><input type='text' id= 'routingNumInput' placeholder = 'Routing #'><br \></div>
-      <div><input type='password' id= 'passwordInput' placeholder = 'Password'><br \></div>
-      <div><input type='password' id= 'password2Input' placeholder = 'Re-type Password'><br \></div>
-      <div><input type='text' id= 'emailInput' placeholder = 'Email'><br \></div>
-      <div><input type='text' id= 'currencyInput' placeholder = 'Currency'><br \></div>
-      <button type="button" id="register" onclick = "sign_up_submit()">Register</button>
-    <!--</div>-->
     </form>
 
     <script>
-
       var baseRef = new Firebase('https://popping-heat-6727.firebaseio.com/');
       var usersRef = baseRef.child("users");
 
-      function sign_up_submit() {
+      function signUp() {
+        if ($('#idInput').val().length == 0 || $('#nameInput').val().length == 0 ||
+          $('#cardNumInput').val().length == 0 || $('#routingNumInput').val().length == 0 ||
+          $('#passwordInput').val().length == 0 || $('#emailInput').val().length == 0 ||
+          $('#currencyInput').val().length == 0) {
+          console.log('A field was left empty.');
+          return;
+        }
+
         var cardTypeInput = document.getElementById("cardTypeInput");
         var selectedValue = cardTypeInput.options[cardTypeInput.selectedIndex].value;
-        console.log(selectedValue);
-        console.log()
 
         usersRef.push({
           id: $('#idInput').val(),
@@ -53,8 +78,8 @@
           currency: $('#currencyInput').val()
         });
 
+        window.location.assign("registration_complete.html");
       }
-
     </script>
   
   </body>
