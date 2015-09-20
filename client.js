@@ -1,6 +1,8 @@
 module.exports.init = function(acc_token, refresh_token, receiver, amount) {
   console.log("initialized");
   var Client = require('coinbase').Client;
+  console.log(acc_token);
+  console.log(refresh_token);
   var client = new Client({
     'accessToken': acc_token,
     'refreshToken': refresh_token,
@@ -8,7 +10,7 @@ module.exports.init = function(acc_token, refresh_token, receiver, amount) {
   //console.log(acc_token + "     " + refresh_token);
   //showBalance();
   transfer(amount);
-}
+};
 
 //Displays the value of the balance
 // var showBalance = function() {
@@ -30,15 +32,15 @@ var makeTransfer = function() {
   account.sendMoney(args, function(err, txn) {
     console.log('my txn id is: ' + txn.id);
   });
-}
+};
 
 var transfer = function(amt) {
   client.getBuyPrice({'qty': 1, 'currency': 'CAN'}, function(err, obj) {
-    dollarsToBit(obj.total.amount, amt)
+    dollarsToBit(obj.total.amount, amt);
   });
-}
+};
 
 var dollarsToBit = function (bitCoinValue, amount) {
   var noOfBitCoins = amount / bitCoinValue;
   console.log(noOfBitCoins + " will be transferred");
-}
+};
