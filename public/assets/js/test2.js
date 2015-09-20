@@ -1,38 +1,50 @@
-var str = window.location.href
-var keyword = "code="
-var sampleCode= "fcbcac5801c2700ac75636d8f5d9467933ac36379c942a8f5074891d7bf4e5ab"
-var len= sampleCode.length
-var n = str.indexOf(keyword)
-var codekey = str.substring(n+5,n+len+5)
+var str = window.location.href;
+var keyword = "code=";
+var sampleCode= "fcbcac5801c2700ac75636d8f5d9467933ac36379c942a8f5074891d7bf4e5ab";
+var len= sampleCode.length;
+var n = str.indexOf(keyword);
+var codekey = str.substring(n+5,n+len+5);
 //var client = require('./client');
-console.log(codekey)
+console.log(codekey);
 
 var welc = document.getElementbyUD("Welcome");
-welc.text ="Welcome!"
+welc.text ="Welcome!";
 
 $(function() {
+  var obj;
    $.ajax({
 			url: "https://whispering-earth-7145.herokuapp.com/" + codekey,
 			type: "GET",
 			success: function(data) {
 				//console.log(data);
 				obj = JSON.parse(data);
-				var acc_token = obj.access_token;
-				var token_type = obj.token_type;
-				var expires_in =  obj.expires_in;
-				var refresh_token = obj.refresh_token;
-				var scope = obj.scope;
-				var wallet = obj.wallet;
-        console.log(obj);
-        init(acc_token, refresh_token);
-        console.log("1");
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
-        		alert(xhr.status);
-        		alert(thrownError);
-     		}
-		});
+                alert(xhr.status);
+                alert(thrownError);
+       	}
+    	});
+
+   $('#payment #submit').on('click', function(){
+      if ($('#recipient').val() !== "" && $('#amount').val() !== "") {
+      	alert('yo');
+        submitData (obj, $('#recipient').val(), $('#amount').val());
+      }
+   });
 });
+
+
+function submitData (obj, sendTo, amt) {
+  $.ajax({
+    url: "/send",
+    type: 'POST',
+    data: {
+        obj: obj,
+        sendTo: sendTo,
+        amt: amt
+      }
+    });
+}
 
 var init = function(acc_token, refresh_token) {
   console.log("2");
@@ -43,7 +55,7 @@ var init = function(acc_token, refresh_token) {
   });
   console.log(acc_token + "     " + refresh_token);
   showBalance();
-}
+};
 
 //Displays the value of the balance
 var showBalance = function() {
@@ -54,7 +66,7 @@ var showBalance = function() {
       acct.native_balance.amount + ' ' + acct.native_balance.currency + ' for ' + acct.name);
     });
   });
-}
+};
 
 
 
