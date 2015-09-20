@@ -5,7 +5,7 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var assert = require('assert');
-// var client = require('./client');
+var client = require('./client');
 var app = express();
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -17,13 +17,17 @@ app.use(express.static(__dirname + '/public'))
 
 app.post('/send', function(req,res){
 
-  console.log('Amount given: ');
-  // client.init();
+  console.log(req);
 
-  var amount = req.body.amount;
-  var sendID = req.body.sendID;
+  var acc_token = req.body.obj.access_token;
+  var refresh_token = req.body.obj.refresh_token;
 
-  console.log(String(amount));
+  client.init(acc_token, refresh_token);
+
+  // var amount = req.body.amount;
+  // var sendID = req.body.sendID;
+  //
+  // console.log(String(amount));
 });
 
 app.listen(80);

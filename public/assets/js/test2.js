@@ -46,29 +46,6 @@ function submitData (obj, sendTo, amt) {
     });
 }
 
-var init = function(acc_token, refresh_token) {
-  console.log("2");
-  var Client = require('coinbase').Client;
-  var client = new Client({
-    'accessToken': acc_token,
-    'refreshToken': refresh_token,
-  });
-  console.log(acc_token + "     " + refresh_token);
-  showBalance();
-};
-
-//Displays the value of the balance
-var showBalance = function() {
-  client.getAccounts(function(err, accounts) {
-    console.log(accounts + '\n');
-    accounts.forEach(function(acct) {
-      console.log('my bal: ' + acct.balance.amount + ' ' + acct.balance.currency + ' which is equivalent to ' +
-      acct.native_balance.amount + ' ' + acct.native_balance.currency + ' for ' + acct.name);
-    });
-  });
-};
-
-
 
 //curl https://api.coinbase.com/oauth/token \
 //  -X POST \
