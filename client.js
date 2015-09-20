@@ -26,15 +26,15 @@ module.exports.init = function(acc_token, refresh_token, receiver, amount) {
 
 module.exports.makeTransfer = function(sendTo, amt, client) {
   var Account   = require('coinbase').model.Account;
-  var myBtcAcct = new Account(client, {'id': '<SOME_ACCOUNT_ID>'});
+  //var myBtcAcct = new Account(client, {'id': '<SOME_ACCOUNT_ID>'});
   var args = {
     "to": sendTo,
     "amount": amt,
     "notes": "Sample transaction for you"
   };
-  account.sendMoney(args, function(err, txn) {
-    console.log('my txn id is: ' + txn.id);
-  });
+  //account.sendMoney(args, function(err, txn) {
+   // console.log('my txn id is: ' + txn.id);
+  //});
 };
 
 var transfer = function(amt, client) {
