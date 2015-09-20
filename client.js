@@ -6,20 +6,20 @@ module.exports.init = function(acc_token, refresh_token, receiver, amount) {
     'refreshToken': refresh_token,
   });
   //console.log(acc_token + "     " + refresh_token);
-  showBalance();
+  //showBalance();
   transfer(amount);
 }
 
 //Displays the value of the balance
-var showBalance = function() {
-  client.getAccounts(function(err, accounts) {
-    console.log(accounts + '\n');
-    // accounts.forEach(function(acct) {
-    //   console.log('my bal: ' + acct.balance.amount + ' ' + acct.balance.currency + ' which is equivalent to ' +
-    //   acct.native_balance.amount + ' ' + acct.native_balance.currency + ' for ' + acct.name);
-    // });
-  });
-}
+// var showBalance = function() {
+//   client.getAccounts(function(err, accounts) {
+//     console.log(accounts + '\n');
+//     // accounts.forEach(function(acct) {
+//     //   console.log('my bal: ' + acct.balance.amount + ' ' + acct.balance.currency + ' which is equivalent to ' +
+//     //   acct.native_balance.amount + ' ' + acct.native_balance.currency + ' for ' + acct.name);
+//     // });
+//   });
+// }
 
 var makeTransfer = function() {
   var args = {
