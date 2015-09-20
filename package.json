@@ -10,6 +10,7 @@
     "querystring": "~0.2.0",
     "request": "~2.34.0",
     "body-parser": "1.14.0",
-    "coinbase": "1.0.3"
+    "coinbase": "1.0.3",
+    "coinbase-node": "0.2.1"
   }
 }
