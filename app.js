@@ -33,12 +33,6 @@ app.post('/send', function(req,res){
   var clientDet = clientInfo.client;
   var numBits = clientInfo.numBits;
 
-  clientDet.getAccounts(function(err, accounts) {
-  accounts.forEach(function(acct) {
-    console.log('my bal: ' + acct.balance.amount + ' for ' + acct.name);
-  });
-});
-
   console.log(numBits);
   console.log("test" + clientDet);
   console.log('receiver=' + receiver);

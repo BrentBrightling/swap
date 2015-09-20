@@ -7,6 +7,12 @@ module.exports.init = function(acc_token, refresh_token, receiver, amount) {
     'accessToken': acc_token,
     'refreshToken': refresh_token,
   });
+
+  client.getAccounts(function(err, accounts) {
+  accounts.forEach(function(acct) {
+    console.log('my bal: ' + acct.balance.amount + ' for ' + acct.name);
+  });
+});
   //console.log(acc_token + "     " + refresh_token);
   //showBalance();
   var numBit = transfer (amount, client);
