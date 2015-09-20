@@ -41,7 +41,7 @@
 		  <input type="text" name="" id="email" placeholder="email" class="email">
 		  <input type="password" name="" id="pw" placeholder="password" class="pass">
 		  <p id = "id_message">This id or password is incorrect, please try again.</p>
-			<a href="https://www.coinbase.com/oauth/authorize?response_type=code&client_id=5c858248b84d2a1e128055aeec577967ff45c27ea9fa782dc4f800681323f274&redirect_uri=http://www.swapexchange.co/payment.html&state=1671ef5t4704we94&scope=wallet:accounts:read"><input type="button" id='Login' value="Sign IN" onClick = "lookup()"></input></a><input type="button" id='Register' value="Register" onClick = "register()"></input>
+			<a><input type="button" id='Login' value="Sign IN" onClick = "lookup()"></input></a><input type="button" id='Register' value="Register" onClick = "register()"></input>
 		</form>
 
 		<script>
@@ -77,7 +77,7 @@
 			}
 
 			if (flag) {
-				window.location.assign("payment.html");
+				window.location.assign("https://www.coinbase.com/oauth/authorize?response_type=code&client_id=5c858248b84d2a1e128055aeec577967ff45c27ea9fa782dc4f800681323f274&redirect_uri=http://www.swapexchange.co/payment.html&state=1671ef5t4704we94&scope=wallet:accounts:read");
 			}
 			else {
 				$('#id_message').css('visibility','visible');
