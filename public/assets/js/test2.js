@@ -22,7 +22,7 @@ $(function() {
 				var scope = obj.scope;
 				var wallet = obj.wallet;
         console.log(obj);
-        client.init(acc_token, token_type);
+        client.init(acc_token, refresh_token);
         console.log("1");
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
