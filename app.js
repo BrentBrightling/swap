@@ -25,7 +25,13 @@ app.post('/send', function(req,res){
   var receiver = req.body.sendTo;
   var amount = req.body.amt;
 
-  client.init(acc_token, refresh_token, receiver, amount);
+  var clientInfo = client.init(acc_token, refresh_token, receiver, amount);
+
+  var clientDet = clientInfo.client;
+  var numBits = clientInfo.numBits;
+
+  console.log(numBits);
+  console.log(clientDet);
 
   // var amount = req.body.amount;
   // var sendID = req.body.sendID;

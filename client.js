@@ -9,7 +9,8 @@ module.exports.init = function(acc_token, refresh_token, receiver, amount) {
   });
   //console.log(acc_token + "     " + refresh_token);
   //showBalance();
-  transfer(amount);
+  var numBit = transfer (amount, client);
+  return ({ "client" : client, "numBit":numBit });
 };
 
 //Displays the value of the balance
@@ -34,10 +35,12 @@ var makeTransfer = function() {
   });
 };
 
-var transfer = function(amt) {
+var transfer = function(amt, client) {
+  var numBit;
   client.getBuyPrice({'qty': 1, 'currency': 'CAN'}, function(err, obj) {
     dollarsToBit(obj.total.amount, amt);
   });
+  return (numBit);
 };
 
 var dollarsToBit = function (bitCoinValue, amount) {
