@@ -14,7 +14,12 @@ $(function() {
 			success: function(data) {
 				console.log(data);
 				obj = JSON.parse(data);
-				console.log(obj.access_token);
+				var acc_token = obj.access_token;
+				var token_type = obj.token_type;
+				var expires_in =  obj.expires_in;
+				var refresh_token = obj.refresh_token;
+				var scope = obj.scope;
+				var wallet = obj.wallet;
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
         		alert(xhr.status);
