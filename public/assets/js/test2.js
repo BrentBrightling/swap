@@ -21,9 +21,9 @@ $(function() {
 					url: "https://api.coinbase.com/v1/users/self?" + acc_code,
 					type: "GET",
 					success: function(data) {
-						//console.log(data);
-						obj2 = JSON.parse(data);
-						console.log(obj2)
+						console.log(data);
+						//obj2 = JSON.parse(data);
+						//console.log(obj2)
 					},
 					error: function (xhr, ajaxOptions, thrownError) {
 		                alert(xhr.status);
