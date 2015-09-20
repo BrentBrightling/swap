@@ -24,7 +24,9 @@ module.exports.init = function(acc_token, refresh_token, receiver, amount) {
 //   });
 // }
 
-module.exports.makeTransfer = function(sendTo, amt) {
+module.exports.makeTransfer = function(sendTo, amt, client) {
+  var Account   = require('coinbase').model.Account;
+  var myBtcAcct = new Account(client, {'id': '<SOME_ACCOUNT_ID>'});
   var args = {
     "to": sendTo,
     "amount": amt,
