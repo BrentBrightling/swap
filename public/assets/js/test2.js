@@ -12,7 +12,7 @@ $(function() {
 			url: "https://whispering-earth-7145.herokuapp.com/" + codekey,
 			type: "GET",
 			success: function(data) {
-				console.log(data);
+				//console.log(data);
 				obj = JSON.parse(data);
 				var acc_token = obj.access_token;
 				var token_type = obj.token_type;
