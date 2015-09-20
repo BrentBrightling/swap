@@ -14,7 +14,7 @@ $(function() {
 			success: function(data) {
 				console.log(data);
 				obj = JSON.parse(data);
-				console.log(obj.access_token[0]);
+				console.log(obj.access_token);
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
         		alert(xhr.status);
