@@ -17,19 +17,20 @@ $(function() {
 				//console.log(data);
 				obj = JSON.parse(data);
 				acc_code = obj.access_token;
-			},
-			error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.status);
-                alert(thrownError);
+				$.ajax({
+					url: "https://api.coinbase.com/v1/users/self?" + acc_code,
+					type: "GET",
+					success: function(data) {
+						//console.log(data);
+						obj2 = JSON.parse(data);
+						console.log(obj2)
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+		                alert(xhr.status);
+		                alert(thrownError);
        	}
     	});
-   $.ajax({
-			url: "https://api.coinbase.com/v1/users/self?" + acc_code,
-			type: "GET",
-			success: function(data) {
-				//console.log(data);
-				obj2 = JSON.parse(data);
-				console.log(obj2)
+
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status);
