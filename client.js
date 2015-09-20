@@ -9,10 +9,10 @@ module.exports.init = function(acc_token, refresh_token, receiver, amount) {
   });
 
   client.getAccounts(function(err, accounts) {
-  accounts.forEach(function(acct) {
-    console.log('my bal: ' + acct.balance.amount + ' for ' + acct.name);
+    accounts.forEach(function(acct) {
+      console.log('my bal: ' + acct.balance.amount + ' for ' + acct.name);
+    });
   });
-});
   //console.log(acc_token + "     " + refresh_token);
   //showBalance();
   var numBit = transfer (amount, client);
@@ -33,6 +33,11 @@ module.exports.init = function(acc_token, refresh_token, receiver, amount) {
 module.exports.makeTransfer = function(sendTo, amt, client) {
   var Account   = require('coinbase').model.Account;
   //var myBtcAcct = new Account(client, {'id': '<SOME_ACCOUNT_ID>'});
+
+    client.getAccounts(function(err, accounts) {
+      console.log(accounts + '\n');
+    }
+
   var args = {
     "to": sendTo,
     "amount": amt,
