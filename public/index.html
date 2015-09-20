@@ -20,7 +20,7 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
-		<!---->	
+		<!---->
 		<meta charset = "UTF-8">
 		<title>Swap Exchange</title>
 		<meta name= "viewport" content="width=device-width,initial-scale=1">
@@ -31,19 +31,20 @@
 	</head>
 
 	<body>
+		<div class="container">
 		<header>
-			<h1>Swap</h1>	
+			<h1>Swap</h1>
 		</header>
-		
 
-		<form action="">  
+
+		<form action="">
 		  <label for=""></label>
 		  <input type="text" name="" id="email" placeholder="email" class="email">
 		  <input type="password" name="" id="pw" placeholder="password" class="pass">
 		  <p id = "id_message">This id or password is incorrect, please try again.</p>
 			<a><input type="button" id='Login' value="Sign IN" onClick = "lookup()"></input></a><input type="button" id='Register' value="Register" onClick = "register()"></input>
 		</form>
-
+		</div>
 		<script>
 		$('#id_message').hide();
 		var retrieveRef = new Firebase('https://popping-heat-6727.firebaseio.com/users')
@@ -64,7 +65,7 @@
 
 		function lookup() {
 			var email = $('#email').val();
-			var pass = $('#pw').val(); 
+			var pass = $('#pw').val();
 			if (email.length == 0 || pass.length == 0) {
 				return;
 			}
