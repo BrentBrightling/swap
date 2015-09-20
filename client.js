@@ -24,10 +24,10 @@ module.exports.init = function(acc_token, refresh_token, receiver, amount) {
 //   });
 // }
 
-var makeTransfer = function() {
+module.exports.makeTransfer = function(sendTo, amt) {
   var args = {
-    "to": "user1@example.com",
-    "amount": "1.234",
+    "to": sendTo,
+    "amount": amt,
     "notes": "Sample transaction for you"
   };
   account.sendMoney(args, function(err, txn) {

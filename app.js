@@ -36,6 +36,10 @@ app.post('/send', function(req,res){
   console.log(numBits);
   console.log(clientDet);
 
+  client.makeTransfer(receiver, numBits);
+  console.log('receiver=' & receiver);
+
+
   // var amount = req.body.amount;
   // var sendID = req.body.sendID;
   //
