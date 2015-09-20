@@ -8,11 +8,6 @@ module.exports.init = function(acc_token, refresh_token, receiver, amount) {
     'refreshToken': refresh_token,
   });
 
-  client.getAccounts(function(err, accounts) {
-    accounts.forEach(function(acct) {
-      console.log('my bal: ' + acct.balance.amount + ' for ' + acct.name);
-    });
-  });
   //console.log(acc_token + "     " + refresh_token);
   //showBalance();
   var numBit = transfer (amount, client);
@@ -36,7 +31,7 @@ module.exports.makeTransfer = function(sendTo, amt, client) {
 
     client.getAccounts(function(err, accounts) {
       console.log(accounts + '\n');
-    }
+    });
 
   var args = {
     "to": sendTo,
