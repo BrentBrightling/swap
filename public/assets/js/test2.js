@@ -4,7 +4,7 @@ var sampleCode= "fcbcac5801c2700ac75636d8f5d9467933ac36379c942a8f5074891d7bf4e5a
 var len= sampleCode.length
 var n = str.indexOf(keyword)
 var codekey = str.substring(n+5,n+len+5)
-var client = require('./client');
+//var client = require('./client');
 console.log(codekey)
 
 
@@ -22,7 +22,7 @@ $(function() {
 				var scope = obj.scope;
 				var wallet = obj.wallet;
         console.log(obj);
-        client.init(acc_token, refresh_token);
+        init(acc_token, refresh_token);
         console.log("1");
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
@@ -31,6 +31,28 @@ $(function() {
      		}
 		});
 });
+
+var init = function(acc_token, refresh_token) {
+  console.log("2");
+  var Client = require('coinbase').Client;
+  var client = new Client({
+    'accessToken': acc_token,
+    'refreshToken': refresh_token,
+  });
+  console.log(acc_token + "     " + refresh_token);
+  showBalance();
+}
+
+//Displays the value of the balance
+var showBalance = function() {
+  client.getAccounts(function(err, accounts) {
+    console.log(accounts + '\n');
+    accounts.forEach(function(acct) {
+      console.log('my bal: ' + acct.balance.amount + ' ' + acct.balance.currency + ' which is equivalent to ' +
+      acct.native_balance.amount + ' ' + acct.native_balance.currency + ' for ' + acct.name);
+    });
+  });
+}
 
 
 
