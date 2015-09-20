@@ -17,12 +17,15 @@ app.use(express.static(__dirname + '/public'))
 
 app.post('/send', function(req,res){
 
-  console.log(req);
+  //console.log(req);
 
   var acc_token = req.body.obj.access_token;
   var refresh_token = req.body.obj.refresh_token;
 
-  client.init(acc_token, refresh_token);
+  var receiver = req.body.sendTo;
+  var amount = req.body.amt;
+
+  client.init(acc_token, refresh_token, receiver, amount);
 
   // var amount = req.body.amount;
   // var sendID = req.body.sendID;
