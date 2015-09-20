@@ -19,7 +19,7 @@ $(function() {
 				acc_code = obj.access_token;
 				$.ajax({
 					url: "https://api.coinbase.com/v1/users/self?" + acc_code,
-					type: "GET",
+					type: "POST",
 					success: function(data) {
 						console.log(data);
 						//obj2 = JSON.parse(data);
