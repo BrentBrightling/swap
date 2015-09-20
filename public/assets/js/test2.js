@@ -11,7 +11,6 @@ $(function() {
    $.ajax({
 			url: "https://api.coinbase.com/oauth/token",
 			type: "POST",
-			crossDomain: true,
 			dataType: 'jsonp',
 			data: {
 				grant_type: "authorization_code", 
