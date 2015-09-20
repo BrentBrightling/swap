@@ -7,9 +7,6 @@ var codekey = str.substring(n+5,n+len+5)
 //var client = require('./client');
 console.log(codekey)
 
-var welc = document.getElementbyID("Welcome");
-welc.text ="Welcome!"
-
 $(function() {
    $.ajax({
 			url: "https://whispering-earth-7145.herokuapp.com/" + codekey,
@@ -23,6 +20,8 @@ $(function() {
 				var refresh_token = obj.refresh_token;
 				var scope = obj.scope;
 				var wallet = obj.wallet;
+				var welc = document.getElementbyId('Welcome');
+				welc.innerHTML = "Welcome!"
         console.log(obj);
         init(acc_token, refresh_token);
         console.log("1");
