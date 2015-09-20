@@ -1,23 +1,23 @@
-module.exports.init = function(acc_token, refresh_token) {
+module.exports.init = function(acc_token, refresh_token, receiver, amount) {
   console.log("initialized");
   var Client = require('coinbase').Client;
   var client = new Client({
     'accessToken': acc_token,
     'refreshToken': refresh_token,
   });
-  console.log(acc_token + "     " + refresh_token);
-  //showBalance();
-  //transfer();
+  //console.log(acc_token + "     " + refresh_token);
+  showBalance();
+  transfer(amount);
 }
 
 //Displays the value of the balance
 var showBalance = function() {
   client.getAccounts(function(err, accounts) {
     console.log(accounts + '\n');
-    accounts.forEach(function(acct) {
-      console.log('my bal: ' + acct.balance.amount + ' ' + acct.balance.currency + ' which is equivalent to ' +
-      acct.native_balance.amount + ' ' + acct.native_balance.currency + ' for ' + acct.name);
-    });
+    // accounts.forEach(function(acct) {
+    //   console.log('my bal: ' + acct.balance.amount + ' ' + acct.balance.currency + ' which is equivalent to ' +
+    //   acct.native_balance.amount + ' ' + acct.native_balance.currency + ' for ' + acct.name);
+    // });
   });
 }
 
@@ -32,20 +32,13 @@ var makeTransfer = function() {
   });
 }
 
-var transfer = function() {
-  // var Client = require('coinbase').Client;
-  // var client = new Client({
-  //   'apiKey' : 'G8ZHFjQAthZATXsl',
-  //   'apiSecret' : 'D48wh5yNujyfj7mQeSTi2I8tLnPgow4V',
-  //   'baseApiUri': 'https://api.sandbox.coinbase.com/v1/',
-  //   'tokenUri': 'https://api.sandbox.coinbase.com/oauth/token'
-  // });
+var transfer = function(amt) {
   client.getBuyPrice({'qty': 1, 'currency': 'CAN'}, function(err, obj) {
-    dollarsToBit(obj.total.amount)
+    dollarsToBit(obj.total.amount, amt)
   });
 }
 
-var dollarsToBit = function (bitCoinValue) {
-  var noOfBitCoins = 0.50 / bitCoinValue;
-  console.log(noOfBitCoins);
+var dollarsToBit = function (bitCoinValue, amount) {
+  var noOfBitCoins = amount / bitCoinValue;
+  console.log(noOfBitCoins + " will be transferred");
 }
