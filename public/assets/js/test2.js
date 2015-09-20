@@ -14,22 +14,22 @@ $(function() {
 			url: "https://whispering-earth-7145.herokuapp.com/" + codekey,
 			type: "GET",
 			success: function(data) {
-				//console.log(data);
+				console.log(data);
 				obj = JSON.parse(data);
 				acc_code = obj.access_token;
-				$.ajax({
-					url: "https://api.coinbase.com/v1/users/self?" + acc_code,
-					type: "POST",
-					success: function(data) {
-						console.log(data);
+		//		$.ajax({
+	///				url: "https://api.coinbase.com/v1/users/self?" + acc_code,
+		//			type: "POST",
+			//		success: function(data) {
+			//			console.log(data);
 						//obj2 = JSON.parse(data);
 						//console.log(obj2)
-					},
-					error: function (xhr, ajaxOptions, thrownError) {
-		                alert(xhr.status);
-		                alert(thrownError);
-       	}
-    	});
+			//		},
+			//		error: function (xhr, ajaxOptions, thrownError) {
+		    //            alert(xhr.status);
+		  //              alert(thrownError);
+       	//}
+    	//});
 
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
