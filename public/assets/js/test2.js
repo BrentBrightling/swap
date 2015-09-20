@@ -12,7 +12,7 @@ $(function() {
 			url: "https://whispering-earth-7145.herokuapp.com/" + codekey,
 			type: "GET",
 			success: function(data) {
-				alert(data);
+				console.log(data);
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
         		alert(xhr.status);
