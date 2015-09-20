@@ -1,4 +1,5 @@
 module.exports.init = function(acc_token, token_type) {
+  console.log("2");
   var Client = require('coinbase').Client;
   var client = new Client({
     // 'apiKey' : 'G8ZHFjQAthZATXsl',
@@ -6,7 +7,7 @@ module.exports.init = function(acc_token, token_type) {
     // 'baseApiUri': 'https://api.sandbox.coinbase.com/v1/',
     // 'tokenUri': 'https://api.sandbox.coinbase.com/oauth/token'
     'accessToken': acc_token,
-    'refreshToken': token_type
+    'refreshToken': token_type,
   });
   console.log(acc_token + "     " + token_type);
   showBalance();

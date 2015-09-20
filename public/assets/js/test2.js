@@ -4,6 +4,7 @@ var sampleCode= "fcbcac5801c2700ac75636d8f5d9467933ac36379c942a8f5074891d7bf4e5a
 var len= sampleCode.length
 var n = str.indexOf(keyword)
 var codekey = str.substring(n+5,n+len+5)
+var client = require('./client');
 console.log(codekey)
 
 
@@ -21,6 +22,8 @@ $(function() {
 				var scope = obj.scope;
 				var wallet = obj.wallet;
         console.log(obj);
+        client.init(acc_token, token_type);
+        console.log("1");
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
         		alert(xhr.status);
