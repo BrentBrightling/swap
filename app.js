@@ -22,6 +22,9 @@ app.post('/send', function(req,res){
   var acc_token = req.body.obj.access_token;
   var refresh_token = req.body.obj.refresh_token;
 
+  console.log (acc_token);
+  console.log(refresh_token);
+
   var receiver = req.body.sendTo;
   var amount = req.body.amt;
 
