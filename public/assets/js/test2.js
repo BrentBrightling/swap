@@ -6,6 +6,7 @@ var n = str.indexOf(keyword);
 var codekey = str.substring(n+5,n+len+5);
 //var client = require('./client');
 console.log(codekey);
+var acc_code;
 
 $(function() {
   var obj;
@@ -15,12 +16,28 @@ $(function() {
 			success: function(data) {
 				//console.log(data);
 				obj = JSON.parse(data);
+				acc_code = obj.access_token;
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status);
                 alert(thrownError);
        	}
     	});
+   $.ajax({
+			url: "https://api.coinbase.com/v1/users/self?" + acc_code,
+			type: "GET",
+			success: function(data) {
+				//console.log(data);
+				obj2 = JSON.parse(data);
+				console.log(obj2)
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+       	}
+    	});
+
+
 
    $('#payment #submit').on('click', function(){
       if ($('#recipient').val() !== "" && $('#amount').val() !== "") {
